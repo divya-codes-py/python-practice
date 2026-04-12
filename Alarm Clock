@@ -1,0 +1,126 @@
+import time
+from datetime import datetime
+
+def get_current_time():
+    now = datetime.now()
+    return now.strftime("%H:%M:%S")
+
+def show_clock():
+    print("\n🕐 Current Time:")
+    for _ in range(5):
+        print(f"   ⏰ {get_current_time()}", end="\r")
+        time.sleep(1)
+    print()
+
+def set_alarm():
+    print("\n⏰ Alarm Set Maadi!")
+    print("=" * 35)
+
+    try:
+        hour = int(input("Gante (0-23): "))
+        minute = int(input("Nimishe (0-59): "))
+
+        if hour < 0 or hour > 23:
+            print("⚠️ Gante 0-23 naduva irali!")
+            return
+        if minute < 0 or minute > 59:
+            print("⚠️ Nimishe 0-59 naduva irali!")
+            return
+
+    except ValueError:
+        print("⚠️ Valid number type maadi!")
+        return
+
+    alarm_time = f"{hour:02d}:{minute:02d}"
+    print(f"\n✅ Alarm set aythu: {alarm_time}")
+    print("⏳ Waiting...")
+
+    while True:
+        current = datetime.now().strftime("%H:%M")
+        print(f"   🕐 {get_current_time()}", end="\r")
+
+        if current == alarm_time:
+            print("\n" + "=" * 35)
+            print("🔔 RING RING RING! ⏰🔔")
+            print("🔔 Alarm time aythu!")
+            print("🔔 RING RING RING! ⏰🔔")
+            print("=" * 35)
+            break
+
+        time.sleep(1)
+
+def multiple_alarms():
+    alarms = []
+
+    print("\n📋 Multiple Alarms Set Maadi!")
+    print("=" * 35)
+
+    while True:
+        try:
+            hour = int(input("Gante (0-23): "))
+            minute = int(input("Nimishe (0-59): "))
+            label = input("Alarm label (e.g. Medicine, Wake up): ")
+
+            alarm_time = f"{hour:02d}:{minute:02d}"
+            alarms.append({"time": alarm_time, "label": label, "done": False})
+            print(f"✅ Alarm set: {alarm_time} — {label}")
+
+        except ValueError:
+            print("⚠️ Valid number type maadi!")
+            continue
+
+        more = input("Innu alarm set maadali? (yes/no): ").lower()
+        if more != "yes":
+            break
+
+    if not alarms:
+        print("❌ Yaavude alarm illa!")
+        return
+
+    print(f"\n⏳ {len(alarms)} alarms waiting...")
+
+    while True:
+        current = datetime.now().strftime("%H:%M")
+        print(f"   🕐 {get_current_time()}", end="\r")
+
+        for alarm in alarms:
+            if current == alarm["time"] and not alarm["done"]:
+                print("\n" + "=" * 35)
+                print(f"🔔 RING RING! ⏰")
+                print(f"🔔 {alarm['label'].upper()}!")
+                print(f"🔔 Time: {alarm['time']}")
+                print("=" * 35)
+                alarm["done"] = True
+
+        if all(alarm["done"] for alarm in alarms):
+            print("\n✅ Ella alarms complete aythu!")
+            break
+
+        time.sleep(1)
+
+def main():
+    print("⏰ Alarm Clock App!")
+    print("=" * 35)
+
+    while True:
+        print("\n📌 Menu:")
+        print("1. Current time nodu")
+        print("2. Ondu alarm set maadi")
+        print("3. Multiple alarms set maadi")
+        print("4. Exit")
+
+        choice = input("\nOption (1-4): ")
+
+        if choice == "1":
+            show_clock()
+        elif choice == "2":
+            set_alarm()
+        elif choice == "3":
+            multiple_alarms()
+        elif choice == "4":
+            print("👋 Bye! Time is precious! ⏰")
+            break
+        else:
+            print("⚠️ 1 to 4 maatra type maadi!")
+
+main()
