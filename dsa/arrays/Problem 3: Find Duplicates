@@ -1,0 +1,22 @@
+# Problem: Find duplicate numbers in a list
+# Interview Question: "Which numbers appear more than once?"
+
+def find_duplicates(numbers):
+    seen = []
+    duplicates = []
+    
+    for num in numbers:
+        if num in seen:
+            if num not in duplicates:
+                duplicates.append(num)
+        else:
+            seen.append(num)
+    
+    return duplicates
+
+
+# Test
+nums = [1, 2, 3, 2, 4, 3, 5]
+result = find_duplicates(nums)
+print(f"List: {nums}")
+print(f"Duplicates: {result}")
