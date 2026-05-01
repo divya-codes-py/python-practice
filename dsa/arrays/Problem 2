@@ -1,0 +1,20 @@
+# Problem: Reverse a list without using reverse()
+# Interview Question: "Reverse the list manually"
+
+def reverse_list(numbers):
+    left = 0
+    right = len(numbers) - 1
+    
+    while left < right:
+        numbers[left], numbers[right] = numbers[right], numbers[left]
+        left += 1
+        right -= 1
+    
+    return numbers
+
+
+# Test
+nums = [1, 2, 3, 4, 5]
+print(f"Original: {nums}")
+result = reverse_list(nums)
+print(f"Reversed: {result}")
