@@ -1,0 +1,27 @@
+# Problem: Find element that appears more than n/2 times
+# Interview Question: "Which number dominates the list?"
+
+def find_majority(numbers):
+    count_map = {}
+
+    for num in numbers:
+        if num in count_map:
+            count_map[num] += 1
+        else:
+            count_map[num] = 1
+
+    majority = len(numbers) // 2
+
+    for num, count in count_map.items():
+        if count > majority:
+            return num
+
+    return None
+
+
+# Test
+nums = [3, 3, 4, 2, 3, 3, 3]
+result = find_majority(nums)
+
+print(f"List: {nums}")
+print(f"Majority element: {result}")
