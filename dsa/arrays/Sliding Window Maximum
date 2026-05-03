@@ -1,0 +1,21 @@
+# Problem: Find maximum in every window of size k
+# Interview Question: "As a window slides across the list, what is max each time?"
+
+def sliding_window_max(numbers, k):
+    result = []
+
+    for i in range(len(numbers) - k + 1):
+        window = numbers[i:i + k]
+        result.append(max(window))
+
+    return result
+
+
+# Test
+nums = [1, 3, -1, -3, 5, 3, 6, 7]
+k = 3
+result = sliding_window_max(nums, k)
+
+print(f"List: {nums}")
+print(f"Window size: {k}")
+print(f"Window maximums: {result}")
