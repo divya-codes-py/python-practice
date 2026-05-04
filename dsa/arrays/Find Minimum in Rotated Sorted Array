@@ -1,0 +1,19 @@
+# Problem: Find minimum element in a rotated sorted list
+# Interview Question: "List was sorted then rotated — find the smallest"
+
+def find_min_rotated(numbers):
+    minimum = numbers[0]
+
+    for num in numbers:
+        if num < minimum:
+            minimum = num
+
+    return minimum
+
+
+# Test
+nums = [4, 5, 6, 7, 1, 2, 3]
+result = find_min_rotated(nums)
+
+print(f"Rotated list: {nums}")
+print(f"Minimum element: {result}")
