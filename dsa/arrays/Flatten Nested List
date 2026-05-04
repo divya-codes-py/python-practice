@@ -1,0 +1,22 @@
+# Problem: Convert nested list into a single flat list
+# Interview Question: "Remove all inner lists and make one flat list"
+
+def flatten_list(nested):
+    flat = []
+
+    for item in nested:
+        if isinstance(item, list):
+            for element in item:
+                flat.append(element)
+        else:
+            flat.append(item)
+
+    return flat
+
+
+# Test
+nested = [1, [2, 3], [4, 5], 6, [7, 8]]
+result = flatten_list(nested)
+
+print(f"Nested: {nested}")
+print(f"Flattened: {result}")
