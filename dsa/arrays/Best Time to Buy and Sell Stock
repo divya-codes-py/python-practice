@@ -1,0 +1,22 @@
+# Problem: Find the best day to buy and sell stock for maximum profit
+# Input:  [7, 1, 5, 3, 6, 4]
+# Output: 5  (buy at 1, sell at 6)
+
+def max_profit(prices):
+    if not prices:
+        return 0
+
+    min_price = prices[0]   # Track the lowest price seen so far
+    best_profit = 0         # Track the highest profit seen so far
+
+    for price in prices:
+        if price < min_price:
+            min_price = price                    # Found a new minimum
+        elif price - min_price > best_profit:
+            best_profit = price - min_price      # Found a better profit
+
+    return best_profit
+
+# Test
+print(max_profit([7, 1, 5, 3, 6, 4]))  # 5
+print(max_profit([7, 6, 4, 3, 1]))     # 0 (no profit possible)
