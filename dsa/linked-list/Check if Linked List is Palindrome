@@ -1,0 +1,35 @@
+# Problem: Check if linked list reads same forwards and backwards
+# Input:  1 -> 2 -> 3 -> 2 -> 1
+# Output: True
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+def is_palindrome(head):
+    # Store all values in a list
+    values = []
+    curr = head
+
+    while curr is not None:
+        values.append(curr.data)
+        curr = curr.next
+
+    # Check if list equals its reverse
+    return values == values[::-1]
+
+# Test
+head = Node(1)
+head.next = Node(2)
+head.next.next = Node(3)
+head.next.next.next = Node(2)
+head.next.next.next.next = Node(1)
+
+print(is_palindrome(head))  # True
+
+head2 = Node(1)
+head2.next = Node(2)
+head2.next.next = Node(3)
+
+print(is_palindrome(head2))  # False
