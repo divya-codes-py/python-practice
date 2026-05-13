@@ -1,0 +1,48 @@
+# Problem: Two numbers stored as linked lists, add them
+# Input:  2 -> 4 -> 3  (represents 342)
+#         5 -> 6 -> 4  (represents 465)
+# Output: 7 -> 0 -> 8  (represents 807)
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+def add_two_numbers(l1, l2):
+    dummy = Node(0)
+    curr = dummy
+    carry = 0
+
+    while l1 is not None or l2 is not None or carry:
+        val1 = l1.data if l1 else 0
+        val2 = l2.data if l2 else 0
+
+        total = val1 + val2 + carry
+        carry = total // 10       # Carry for next step
+        digit = total % 10        # Current digit
+
+        curr.next = Node(digit)
+        curr = curr.next
+
+        if l1:
+            l1 = l1.next
+        if l2:
+            l2 = l2.next
+
+    return dummy.next
+
+# Test
+l1 = Node(2)
+l1.next = Node(4)
+l1.next.next = Node(3)
+
+l2 = Node(5)
+l2.next = Node(6)
+l2.next.next = Node(4)
+
+result = add_two_numbers(l1, l2)
+curr = result
+while curr:
+    print(curr.data, end=" -> ")
+    curr = curr.next
+# Output: 7 -> 0 -> 8
