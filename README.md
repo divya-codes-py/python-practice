@@ -105,4 +105,3 @@ no classroom. Just curiosity and consistency.
 
 ---
 
-⭐ *If this inspires you, give it a star!*
