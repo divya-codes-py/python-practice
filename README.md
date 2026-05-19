@@ -95,11 +95,13 @@ no classroom. Just curiosity and consistency.
 
 ## 📩 Connect With Me
 
-[
+[LinkedIn](https://www.linkedin.com/in/divya-m-812418381)
 
-![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=flat&logo=linkedin&logoColor=white)
+---
 
-](https://www.linkedin.com/in/divya-m-812418381)
+⭐ *If this inspires you, give it a star!*
+
+
 
 ---
 
