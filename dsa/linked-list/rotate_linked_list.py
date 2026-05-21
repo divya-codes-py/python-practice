@@ -1,0 +1,54 @@
+# Problem: Rotate linked list to the right by K steps
+# Interview Question: "Rotate linked list by K positions"
+# Input:  1 -> 2 -> 3 -> 4 -> 5, k = 2
+# Output: 4 -> 5 -> 1 -> 2 -> 3
+# LeetCode: #61
+
+# Approach - Find Length + Reconnect
+# Time Complexity: O(n)
+# Space Complexity: O(1)
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+def rotate_linked_list(head, k):
+    if head is None or k == 0:
+        return head
+
+    # Find length and last node
+    length = 1
+    tail = head
+    while tail.next is not None:
+        tail = tail.next
+        length += 1
+
+    k = k % length  # Handle k larger than length
+    if k == 0:
+        return head
+
+    # Find new tail
+    new_tail = head
+    for i in range(length - k - 1):
+        new_tail = new_tail.next
+
+    new_head = new_tail.next
+    new_tail.next = None  # Break the list
+    tail.next = head      # Connect old tail to old head
+
+    return new_head
+
+# Test
+head = Node(1)
+head.next = Node(2)
+head.next.next = Node(3)
+head.next.next.next = Node(4)
+head.next.next.next.next = Node(5)
+
+result = rotate_linked_list(head, 2)
+curr = result
+while curr:
+    print(curr.data, end=" -> ")
+    curr = curr.next
+# Output: 4 -> 5 -> 1 -> 2 -> 3
