@@ -39,7 +39,7 @@ Currently focused on:
 |-------|--------|
 | Arrays & Lists | ✅ Complete |
 | Linked Lists | ✅ Complete |
-| Stack & Queue | 🔄 In Progress |
+| Stack & Queue | ✅ Complete |
 | Trees & Graphs | ⬜ Upcoming |
 | Sorting | ⬜ Upcoming |
 | Searching | ⬜ Upcoming |
