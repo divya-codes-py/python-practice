@@ -1,0 +1,65 @@
+# Circular Deque — LeetCode #641
+# Time Complexity: O(1) all operations
+# Space Complexity: O(k)
+
+from collections import deque
+
+class MyCircularDeque:
+
+    def __init__(self, k: int):
+        self.q = deque()
+        self.k = k
+
+    def insertFront(self, value: int) -> bool:
+        if self.isFull():
+            return False
+        self.q.appendleft(value)
+        return True
+
+    def insertLast(self, value: int) -> bool:
+        if self.isFull():
+            return False
+        self.q.append(value)
+        return True
+
+    def deleteFront(self) -> bool:
+        if self.isEmpty():
+            return False
+        self.q.popleft()
+        return True
+
+    def deleteLast(self) -> bool:
+        if self.isEmpty():
+            return False
+        self.q.pop()
+        return True
+
+    def getFront(self) -> int:
+        if self.isEmpty():
+            return -1
+        return self.q[0]        # front element
+
+    def getRear(self) -> int:
+        if self.isEmpty():
+            return -1
+        return self.q[-1]       # rear element
+
+    def isEmpty(self) -> bool:
+        return len(self.q) == 0
+
+    def isFull(self) -> bool:
+        return len(self.q) == self.k
+
+
+# Test — Full
+obj = MyCircularDeque(3)
+print(obj.insertLast(1))    # True  → [1]
+print(obj.insertFront(2))   # True  → [2,1]
+print(obj.insertFront(3))   # True  → [3,2,1]
+print(obj.insertFront(4))   # False → full
+print(obj.getFront())       # 3
+print(obj.getRear())        # 1
+print(obj.deleteLast())     # True  → [3,2]
+print(obj.getRear())        # 2
+print(obj.isEmpty())        # False
+print(obj.isFull())         # False
